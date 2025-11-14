@@ -11,7 +11,6 @@ def split_before_each_uppercases(formula):
     return split_formula
 
 
-
 def split_at_first_digit(formula):
     digit_location = 0
     
