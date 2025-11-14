@@ -11,25 +11,24 @@ def split_before_each_uppercases(formula):
     return split_formula
 
 
-
-
 def split_at_first_digit(formula):
     digit_location = 0
 
-    while digit_location < len(formula):
-        if formula[digit_location].isdigit():
-            break
-        digit_location += 1
+    while digit_location < len(formula) and not formula[digit_location].isdigit():
+       digit_location += 1
 
     if digit_location == len(formula):
         return formula, 1
-    else:
-        prefix = formula[:digit_location]
-        numeric_part_str = formula[digit_location:]
+
+    num_start = digit_location
+    num_end = num_start
+    while num_end < len(formula) and formula[num_end].isdigit():
+        num_end += 1
+  
+    prefix = formula[:num_start]
+    numeric_part_str = formula[num_start:num_end]
         
-        try:
-            numeric_part_int = int(numeric_part_str)
-        except ValueError:
-            return prefix, 1
-            
-        return prefix, numeric_part_int
+        
+    numeric_part_int = int(numeric_part_str)
+          
+    return prefix, numeric_part_int
