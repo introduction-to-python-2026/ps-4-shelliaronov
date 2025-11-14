@@ -14,10 +14,12 @@ def split_before_each_uppercases(formula):
     return split_formula
 
 
-def test_split_at_first_digit():
+def test_split_at_first_digit(formula):
   digit_location = 1
 
-  while digit_location < len(formula) and not formula[digit_location].isdigit() :
+  while digit_location < len(formula) :
+    if formula[digit_location].isdigit():
+      break
     digit_location += 1
 
   if digit_location == len(formula) :
